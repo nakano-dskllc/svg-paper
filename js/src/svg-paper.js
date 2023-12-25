@@ -44,7 +44,6 @@ export default class SvgPaper {
 
     const textSvg = textElement.outerHTML
     textElement.setAttribute(property, value)
-    
     const replacedTextSvg = textElement.outerHTML
     this.replace(textSvg, replacedTextSvg)
 
