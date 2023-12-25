@@ -34,6 +34,21 @@ export default class SvgPaper {
 
     return this
   }
+
+  setAttribute(selector, property, value) {
+    const doc = new DOMParser().parseFromString(this.svg, 'text/html')
+    const textElement = doc.querySelector(selector)
+    if (!textElement) {
+      return this
+    }
+
+    const textSvg = textElement.outerHTML
+    textElement.setAttribute(property, value)
+    const replacedTextSvg = textElement.outerHTML
+    this.replace(textSvg, replacedTextSvg)
+
+    return this
+  }
   
   adjustText(selector, textLength = null, textAnchor = 'start') {
     this.adjustTextQueries.push({selector, textLength, textAnchor})
